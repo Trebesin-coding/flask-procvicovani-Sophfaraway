@@ -2,29 +2,16 @@ from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
 
-
 @app.route("/")
+# dekorátor - upraví zlepší funkci
+def index():
+    return render_template("index.html")
+
+@app.route("/form")
+def form():
+    py_var = request.args.get("html_formname") 
+    return render_template ("form.html", jinjja_var=py_var)
 
 
-
-# name = request.args.get("name") 
-# input_class = request.args.get("class")
-# message = request.args.get("message")
-
-#     return redirect(url_for("result", name=name, form_class=input_class, message=message))
-    
-
-
-# name = request.form.get("name")
-# input_class = request.form.get("class")
-# message = request.form.get("message")
-
-#     return redirect(url_for("result", name=name, form_class=input_class, message=message))
-    
-
-
-
-
-
-if __name__ == "__main__":
+if __name__ == "__main__": 
     app.run(debug=True) #spouštění flaskové aplikace
